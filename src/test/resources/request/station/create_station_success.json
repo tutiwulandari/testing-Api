@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "name": "Stasiun Cawang",
+  "code": {
+    "internal": "JTM",
+    "external": "CAW"
+  },
+  "location": {
+    "latitude": "-6.1311264",
+    "longitude": "106.5394471"
+  },
+  "operationHour": [
+    {
+      "openTime": "05:00:00",
+      "closeTime": "23:00:00",
+      "effectiveDate": {
+        "startFrom": "2023-12-25",
+        "endAt": "2023-12-26"
+      }
+    }
+  ]
+}
