@@ -6,9 +6,9 @@ import java.util.Map;
 public class ConstantParameter {
 
 
-    public static final String BASE_URI = "localhost:8081/v2";
+    public static final String BASE_URI = "http://0.0.0.0:8081";
 
-    public static final String PATH_PARAM_MODULE_STATION = "/station";
+    public static final String PATH_PARAM_MODULE_STATION = "/v2/station";
 
 
     public static final Map<String, String> HTTP_HEADER_TEMPLATE = new HashMap<>();
