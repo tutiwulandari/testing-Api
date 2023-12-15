@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "stations": [
+    {
+      "station": {
+        "uuid": "f41a467d-3152-4d92-ae41-a109f8aa64d2"
+      }
+    }
+  ]
+}
