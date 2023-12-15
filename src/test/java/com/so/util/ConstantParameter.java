@@ -11,6 +11,8 @@ public class ConstantParameter {
 
     public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
 
+    public static final String PATH_PARAM_MODULE_GET_STATION = "/v2/stasiun/list";
+
 
     public static final Map<String, String> HTTP_HEADER_TEMPLATE = new HashMap<>();
 
