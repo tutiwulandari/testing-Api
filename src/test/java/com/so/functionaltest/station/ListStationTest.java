@@ -7,7 +7,6 @@ import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
@@ -19,7 +18,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @Slf4j
 public class ListStationTest {
     @Test(testName = "TC01", description = "Verify Get List Station Success")
-    public void getListStation() throws IOException, ParseException {
+    public void getListStation()  {
         RequestSpecification requestSpecification = createRequest();
         String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
         requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
@@ -34,6 +33,20 @@ public class ListStationTest {
                 extract.response().prettyPrint();
 //        System.out.println(extract.response().getBody().prettyPrint());
 
+    }
+
+    @Test
+    public void getListStationTokenIsBlank()  {
+        RequestSpecification requestSpecification = createRequest();
+        ExtractableResponse<Response> extract = given(requestSpecification).get().then().
+                statusCode(200)
+                .body("version", equalTo("2.0.0"))
+                .body("success", equalTo(true))
+                .body("timestamp", notNullValue())
+                .body("message", notNullValue())
+                .body("data", notNullValue())
+                .extract();
+        extract.response().prettyPrint();
     }
 
     private RequestSpecification createRequest() {
