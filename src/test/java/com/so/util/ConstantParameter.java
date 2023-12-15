@@ -6,10 +6,10 @@ import java.util.Map;
 public class ConstantParameter {
 
 
-    public static final String BASE_URI = "https://mock.apidog.com/m1/416892-0-2a2c955f";
+    public static final String BASE_URI = "http://0.0.0.0:8081";
 
 
-    public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
+    public static final String PATH_PARAM_MODULE_STATION = "/v2/station";
 
 
     public static final Map<String, String> HTTP_HEADER_TEMPLATE = new HashMap<>();
