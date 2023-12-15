@@ -16,7 +16,7 @@ public class LoginAPI {
 
     public static String getTokenWhenUsingLogin() {
         JSONObject request = new JSONObject();
-        request.put("username", "demo-so");
+        request.put("username", "demo-ta");
         request.put("password", "75673aad502f3dd315172de4f34d58cc");
         request.put("deviceType", "WEB");
         request.put("deviceId", "d2131dewfe@!$@#");

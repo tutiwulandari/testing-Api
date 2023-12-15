@@ -96,28 +96,28 @@ public class APITests {
 //
 //    }
 
-    @Test
-    void testPost() {
-//        Map<String, String> users = new HashMap<>();
-//        users.put("name", "Wulan");
-//        users.put("Job", "QA");
-
-        JSONObject request = new JSONObject();
-        request.put("name", "Wulan");
-        request.put("Job", "QA");
-//        System.out.println(request.toJSONString());
-
-        baseURI = "https://reqres.in/api";
-        given().
-                header("Content-Type", "application/json").
-                contentType(ContentType.JSON).accept(ContentType.JSON).
-                body(request.toJSONString()).
-                when().
-                post("/users").
-                then().statusCode(201).log().all();
-
-
-    }
+//    @Test
+//    void testPost() {
+////        Map<String, String> users = new HashMap<>();
+////        users.put("name", "Wulan");
+////        users.put("Job", "QA");
+//
+//        JSONObject request = new JSONObject();
+//        request.put("name", "Wulan");
+//        request.put("Job", "QA");
+////        System.out.println(request.toJSONString());
+//
+//        baseURI = "https://reqres.in/api";
+//        given().
+//                header("Content-Type", "application/json").
+//                contentType(ContentType.JSON).accept(ContentType.JSON).
+//                body(request.toJSONString()).
+//                when().
+//                post("/users").
+//                then().statusCode(201).log().all();
+//
+//
+//    }
 
 //    @Test
 //    void testLogin() {
@@ -136,24 +136,24 @@ public class APITests {
 //                then().log().all().statusCode(200);
 //    }
 
-    @Test
-    void testLogin() {
-        baseURI = "https://dev.lrtosis.com:30000";
-        JSONObject request = new JSONObject();
-        ValidatableResponse validatableResponse;
+//    @Test
+//    void testLogin() {
+//        baseURI = "https://dev.lrtosis.com:30000";
+//        JSONObject request = new JSONObject();
+//        ValidatableResponse validatableResponse;
+//
+//        request.put("username", "demo-ta");
+//        request.put("password", "75673aad502f3dd315172de4f34d58cc");
+//        request.put("deviceType", "WEB");
+//        request.put("deviceId", "d2131dewfe@!$@#");
+//        validatableResponse = given().relaxedHTTPSValidation()
+//                .header("Content-Type", "application/json")
+//                .body(request.toJSONString()).
+//                when().post("/v2/login").
+//                then().statusCode(200);
+////        System.out.println("Response :" + validatableResponse.extract().asPrettyString());
+//        String token = validatableResponse.extract().asPrettyString();
+//        System.out.println(token);
 
-        request.put("username", "demo-ta");
-        request.put("password", "75673aad502f3dd315172de4f34d58cc");
-        request.put("deviceType", "WEB");
-        request.put("deviceId", "d2131dewfe@!$@#");
-        validatableResponse = given().relaxedHTTPSValidation()
-                .header("Content-Type", "application/json")
-                .body(request.toJSONString()).
-                when().post("/v2/login").
-                then().statusCode(200);
-//        System.out.println("Response :" + validatableResponse.extract().asPrettyString());
-        String token = validatableResponse.extract().asPrettyString();
-        System.out.println(token);
-
-    }
+//    }
 }
