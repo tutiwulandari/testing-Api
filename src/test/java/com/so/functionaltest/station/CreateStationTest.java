@@ -3,8 +3,6 @@ package com.so.functionaltest.station;
 import com.so.invokesapi.LoginAPI;
 import com.so.invokesapi.StationAPI;
 import com.so.util.Utility;
-import io.restassured.response.ValidatableResponse;
-import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
@@ -31,8 +29,7 @@ public class CreateStationTest {
                 .body("version", equalTo("2.0.0"))
                 .body("success", equalTo(true))
                 .body("timestamp", notNullValue())
-                .body("message", notNullValue())
-                .extract();
+                .body("message", notNullValue());
 
     }
 
@@ -46,8 +43,7 @@ public class CreateStationTest {
                 .body("success", equalTo(false))
                 .body("timestamp", notNullValue())
                 .body("message", notNullValue())
-                .body("error", notNullValue())
-                .extract().response().prettyPrint();
+                .body("error", notNullValue());
     }
 
     @Test(testName = "TC03", description = "Verify Request Body Invalid")
@@ -64,8 +60,7 @@ public class CreateStationTest {
                 .body("success", equalTo(false))
                 .body("timestamp", notNullValue())
                 .body("message", notNullValue())
-                .body("error", notNullValue())
-                .extract();
+                .body("error", notNullValue());
     }
 
 

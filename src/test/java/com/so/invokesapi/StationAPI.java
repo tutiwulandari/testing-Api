@@ -29,4 +29,22 @@ public class StationAPI {
         return validatableResponse;
     }
 
+    public static ValidatableResponse invokeUpdateStation(Map<String, String> headers, JSONObject body, String path) {
+
+        var requestSpecification = new RequestSpecBuilder()
+                .addHeaders(ConstantParameter.HTTP_HEADER_TEMPLATE)
+                .setBaseUri(ConstantParameter.BASE_URI + ConstantParameter.PATH_PARAM_MODULE_STATION + "/" + path)
+                .setBody(body.toJSONString()).build();
+        if (!CollectionUtils.isEmpty(headers)) {
+            requestSpecification.headers(headers);
+        }
+        var tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
+        requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
+        var validatableResponse = given(requestSpecification)
+                .log().all().patch()
+                .then();
+        System.out.println("result body: " + validatableResponse.extract().response().prettyPrint());
+        return validatableResponse;
+    }
+
 }

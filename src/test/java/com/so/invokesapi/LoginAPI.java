@@ -33,6 +33,7 @@ public class LoginAPI {
 
         validatableResponse = given(createRequest(request.toJSONString())).relaxedHTTPSValidation().log().all()
                 .post().then().statusCode(200);
+        System.out.println("result body: " + validatableResponse.extract().response().prettyPrint());
         return validatableResponse;
     }
 
