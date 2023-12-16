@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "stations": [
+    {
+      "station": {
+        "uuid": "f41a467d-3152-4d92-ae41-a109f8aa64d2"
+      }
+    },
+    {
+      "station": {
+        "uuid": "ee232cb4-f999-4e01-83c6-176ec45bbbb6"
+      }
+    },
+    {
+      "station": {
+        "uuid": "8b97e549-06ff-41f1-8b3b-5e3bc6d28a16"
+      }
+    }
+  ],
+  "effectiveDate": {
+    "startFrom": "2019-08-24",
+    "endAt": "2023-12-02"
+  }
+}

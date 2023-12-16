@@ -6,12 +6,23 @@ import java.util.Map;
 public class ConstantParameter {
 
 
-    public static final String BASE_URI = "https://mock.apidog.com/m1/416892-0-2a2c955f";
+    public static String BASE_URI = "172.18.96.1:8081";
     public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
 
     public static final String PATH_PARAM_MODULE_GET_STATION = "/v2/stasiun/list";
 
     public static final Map<String, String> HTTP_HEADER_TEMPLATE = new HashMap<>();
+
+    public static final String PATH_PARAM_MODULE_MASTER_STATION = "/v2/kepalaStasiun/nipp";
+
+    public static final String PATH_PARAM_MODULE_GET_MASTER_STATION = "/v2/kepalaStasiun/list";
+
+    public static final String PATH_PARAM_MODULE_GET_DINAS_CODE_STATION = "/v2/so/kodeDinas/list";
+    public static final String PATH_PARAM_MODULE_DINAS_CODE_STATION = "/v2/so/kodeDinas";
+
+    public static final String RUN_MODE = "LOCAL";
+
+
 
     static {
         HTTP_HEADER_TEMPLATE.put("User-Agent", "Apidog/1.0.0 (https://apidog.com)");

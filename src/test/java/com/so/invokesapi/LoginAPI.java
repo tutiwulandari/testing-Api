@@ -7,8 +7,6 @@ import io.restassured.response.ResponseBodyExtractionOptions;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
-
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class LoginAPI {
@@ -28,7 +26,7 @@ public class LoginAPI {
         return jsonPath.get("token");
     }
 
-    private static ValidatableResponse invokeLogin(JSONObject request) {
+    public static ValidatableResponse invokeLogin(JSONObject request) {
         ValidatableResponse validatableResponse;
 
         validatableResponse = given(createRequest(request.toJSONString())).relaxedHTTPSValidation().log().all()

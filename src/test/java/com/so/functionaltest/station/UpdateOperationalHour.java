@@ -19,7 +19,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 @Slf4j
-public class EditOperationalHour {
+public class UpdateOperationalHour {
 
     @Test(testName = "TC01", description = "Verify Edit Operational Station Success")
     public void editOperationalHour() throws IOException, ParseException {
