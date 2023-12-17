@@ -1,0 +1,7 @@
+<suite name ="Station" verbose = "1">
+    <test name=" Create Station">
+        <classes>
+            <class name="com.so.functionaltest.station.CreateStationTest"/>
+        </classes>
+    </test>
+</suite>

@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @Slf4j
 public class ListMasterStationTest {
 
-    @Test(testName = "TC01", description = "Verify Get List Master Station Success")
+    @Test(testName = "Station_P_002_GetList_MasterStation", description = "Verify Get List Master Station Success")
     public void getListMasterStation() {
         RequestSpecification requestSpecification = Utility
                 .createRequest(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION);
@@ -36,7 +36,7 @@ public class ListMasterStationTest {
                 .body("data", notNullValue())
                 .extract();
         extract.response().prettyPrint();
-//        System.out.println(extract.response().getBody().prettyPrint());
+        System.out.println(extract.response().getBody().prettyPrint());
     }
 
 

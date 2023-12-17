@@ -10,6 +10,7 @@ import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class CreateMasterStationTest {
 
     @Test(testName = "TC01", description = "Verify Create Master Station Success")
     public void createMasterStationSuccess() throws IOException, ParseException {
+
         JSONObject request = Utility.buildRequestJSON("request/station/create_master_station_success.json");
         String usernameMasterStation = ListMasterStationTest.getUsernameMasterStation();
         RequestSpecification requestSpecification = createRequest(request.toJSONString(), usernameMasterStation);
@@ -44,13 +46,21 @@ public class CreateMasterStationTest {
     }
 
     @Test(testName= "TC02")
-
     private RequestSpecification createRequest(String body, String path) {
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         requestSpecBuilder.addHeaders(ConstantParameter.HTTP_HEADER_TEMPLATE)
-                .setBaseUri(ConstantParameter.BASE_URI + ConstantParameter.PATH_PARAM_MODULE_MASTER_STATION + "/" + path )
+                .setBaseUri(ConstantParameter.BASE_URI
+                        + ConstantParameter.PATH_PARAM_MODULE_MASTER_STATION + "/" + path )
                 .setBody(body);
         return requestSpecBuilder.build();
+    }
+
+    @AfterTest
+    public void clearData() {
+        given().get(ConstantParameter.BASE_URI
+                        + "/" +ConstantParameter.PATH_PARAM_MODULE_CLEAR_DATA)
+                .then().statusCode(200)
+                .log().all();
     }
 
 }

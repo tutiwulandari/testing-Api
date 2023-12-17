@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstantParameter {
-
-
-    public static String BASE_URI = "172.18.96.1:8081";
+    public static String BASE_URI = "http://192.168.18.17:8081";
     public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
 
     public static final String PATH_PARAM_MODULE_GET_STATION = "/v2/stasiun/list";
@@ -21,6 +19,8 @@ public class ConstantParameter {
     public static final String PATH_PARAM_MODULE_DINAS_CODE_STATION = "/v2/so/kodeDinas";
 
     public static final String RUN_MODE = "LOCAL";
+
+    public static final String PATH_PARAM_MODULE_CLEAR_DATA = "/v2/stasiun/clear";
 
 
 

@@ -7,6 +7,8 @@ import io.restassured.response.ResponseBodyExtractionOptions;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import org.json.simple.JSONObject;
+
+
 import static io.restassured.RestAssured.given;
 
 public class LoginAPI {
@@ -42,4 +44,5 @@ public class LoginAPI {
                 .setBody(body);
         return requestSpecBuilder.build();
     }
+
 }
