@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstantParameter {
-    public static String BASE_URI = "http://192.168.18.17:8081";
+    public static String BASE_URI = "https://a783-118-99-110-0.ngrok-free.app";
     public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
 
     public static final String PATH_PARAM_MODULE_GET_STATION = "/v2/stasiun/list";
@@ -29,7 +29,7 @@ public class ConstantParameter {
         HTTP_HEADER_TEMPLATE.put("Content-Type", "application/json");
         HTTP_HEADER_TEMPLATE.put("Accept-Encoding", "gzip, deflate, br");
         HTTP_HEADER_TEMPLATE.put("Accept", "*/*");
-        HTTP_HEADER_TEMPLATE.put("Host", "mock.apidog.com");
+//        HTTP_HEADER_TEMPLATE.put("Host", "mock.apidog.com");
         HTTP_HEADER_TEMPLATE.put("Cache-Control", "no-cache");
         HTTP_HEADER_TEMPLATE.put("Connection", "keep-alive");
     }

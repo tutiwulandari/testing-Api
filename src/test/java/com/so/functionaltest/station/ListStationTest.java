@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 @Slf4j
 public class ListStationTest {
-    @Test(testName = "Station_P_002_GetList_Station", description = "Verify Get List Station Success")
+    @Test(testName = "Station_P_002_GetListStation_Station_Success", description = "Verify Get List Station Success")
     public void getListStation()  {
         RequestSpecification requestSpecification = Utility.createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_STATION,
                 Collections.singletonMap("TESTING-LOGIN-USER", "ADMIN.admin"));
@@ -39,7 +39,7 @@ public class ListStationTest {
 
     }
 
-    @Test(testName = "Station_N_006_GetList_TokenInvalid", description = "Verify Get List when token invalid")
+    @Test(testName = "Station_N_006_GetListStation_TokenInvalid", description = "Verify Get List when token invalid")
     public void getStationTokenInvalid()  {
         RequestSpecification requestSpecification = Utility.createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_STATION,
                 Collections.singletonMap("TESTING-LOGIN-USER", "ADMIN.admin"));
@@ -53,7 +53,7 @@ public class ListStationTest {
         extract.response().prettyPrint();
     }
 
-    @Test(testName = "Station_N_005_GetList_AuthorizationInvalid", description = "Verify Get List when token invalid")
+    @Test(testName = "Station_N_005_GetListStation_AuthorizationInvalid", description = "Verify Get List when token invalid")
     public  void getStationAuthInvalid() {
         RequestSpecification requestSpecification = Utility.createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_STATION,
                 Collections.singletonMap("TESTING-LOGIN-USER", "MASTER.admin"));
@@ -66,7 +66,7 @@ public class ListStationTest {
                 .body("timestamp", notNullValue())
                 .body("message", notNullValue())
                 .extract();
-        extract.response().prettyPrint();
+        System.out.println(extract.response().prettyPrint());
     }
     @BeforeMethod
     public void createStationSuccess() throws IOException, ParseException {

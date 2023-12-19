@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -21,39 +22,78 @@ import static org.hamcrest.Matchers.notNullValue;
 @Slf4j
 public class ListMasterStationTest {
 
-    @Test(testName = "Station_P_002_GetList_MasterStation", description = "Verify Get List Master Station Success")
+    @Test(testName = "Station_P_003_GetList_MasterStation_Success", description = "Verify Get List Master Station Success")
     public void getListMasterStation() {
         RequestSpecification requestSpecification = Utility
-                .createRequest(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION);
+                        .createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION,
+                Collections.singletonMap("TESTING-LOGIN-USER", "STATION_OPERATOR.admin"));
         String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
         requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
-        ExtractableResponse<Response> extract = given(requestSpecification).get().then().
-                statusCode(200)
+
+        ExtractableResponse<Response> extract = given(requestSpecification).get().then()
+                .statusCode(200)
                 .body("version", equalTo("2.0.0"))
                 .body("success", equalTo(true))
                 .body("timestamp", notNullValue())
                 .body("message", notNullValue())
                 .body("data", notNullValue())
                 .extract();
-        extract.response().prettyPrint();
+        // extract.response().prettyPrint();
         System.out.println(extract.response().getBody().prettyPrint());
     }
 
 
-    public static String getUsernameMasterStation() {
-        ValidatableResponse validatableResponse;
+    @Test(testName = "Station_N_013_GetList_MasterStation_TokenInvalid", description = "Verify Get List Master Station Token Invalid")
+    public void getListMasterStationTokenIsBlank() {
         RequestSpecification requestSpecification = Utility
-                .createRequest(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION);
-        validatableResponse = given(requestSpecification).relaxedHTTPSValidation()
+                .createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION,
+                        Collections.singletonMap("TESTING-LOGIN-USER", "STATION_OPERATOR.admin"));
+        ExtractableResponse<Response> extract = given(requestSpecification).get().then()
+                .statusCode(401)
+                .body("version", equalTo("2.0.0"))
+                .body("success", equalTo(false))
+                .body("timestamp", notNullValue())
+                .body("message", notNullValue())
+                .extract();
+        // extract.response().prettyPrint();
+        System.out.println(extract.response().getBody().prettyPrint());
+    }
+
+    @Test(testName = "Station_N_014_MasterStation_AuthInvalid", description = "Verify Get List Master Station Authentication Invalid")
+    public void getListMasterStationAuthInvalid() {
+        RequestSpecification requestSpecification = Utility
+                .createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION,
+                        Collections.singletonMap("TESTING-LOGIN-USER", "MASTER.admin"));
+        String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
+        requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
+        ExtractableResponse<Response> extract = given(requestSpecification).get().then()
+                .statusCode(403)
+                .body("version", equalTo("2.0.0"))
+                .body("success", equalTo(false))
+                .body("timestamp", notNullValue())
+                .body("message", notNullValue())
+                .extract();
+        // extract.response().prettyPrint();
+        System.out.println(extract.response().getBody().prettyPrint());
+    }
+    public static String getUsernameMasterStation() {
+        RequestSpecification requestSpecification = Utility.createRequestWithHeader(ConstantParameter.PATH_PARAM_MODULE_GET_MASTER_STATION,
+                        Collections.singletonMap("TESTING-LOGIN-USER", "STATION_OPERATOR.admin"));
+        String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
+        requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
+        Response response = given(requestSpecification).log().all().get();
+        System.out.println(response.getBody().prettyPrint());
+        ValidatableResponse validatableResponse = given(requestSpecification).relaxedHTTPSValidation()
                 .log().all()
                 .get()
                 .then()
                 .statusCode(200);
         ResponseBodyExtractionOptions body = validatableResponse.extract().body();
         JsonPath jsonPath = body.jsonPath();
-        ArrayList<String> listUsername = jsonPath.get("data.content.stationMaster.user.username");
-        String usernameMasterStation = listUsername.get(0);
+        System.out.println("body " +  jsonPath);
 
-        return usernameMasterStation;
+        ArrayList<String> listUsername = jsonPath.get("data.content.user.username");
+
+        return listUsername.get(0);
     }
 }

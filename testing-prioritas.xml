@@ -1,0 +1,11 @@
+<suite name ="Station" verbose = "1">
+    <test name="testing-prioritas">
+        <classes>
+            <class name="com.so.functionaltest.station.CreateStationTest"/>
+            <class name = "com.so.functionaltest.station.ListStationTest"/>
+            <class name = "com.so.functionaltest.dinascode.CreateDinasCodeTest"/>
+            <class name = "com.so.functionaltest.dinascode.ListDinasCodeTest"/>
+            <class name = "com.so.functionaltest.masterstation.ListMasterStationTest" />
+        </classes>
+    </test>
+</suite>

@@ -5,7 +5,6 @@ import com.so.util.ConstantParameter;
 import com.so.util.Utility;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
-import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
 import static org.hamcrest.Matchers.*;
@@ -23,7 +22,7 @@ import java.util.UUID;
 public class CreateDinasCodeTest {
 
     @Test(testName = "Station_P_003_CreateDinasCode_Success", description = "Verify Create Dinas Code Success")
-    public void createDinasCodeSuccess() throws IOException, ParseException {
+    public static void createDinasCodeSuccess() throws IOException, ParseException {
         JSONObject request = Utility.buildRequestJSON("request/station/create_dinas_code_station_success.json");
         request.put("code", UUID.randomUUID().toString());
         RequestSpecification requestSpecification = Utility.
