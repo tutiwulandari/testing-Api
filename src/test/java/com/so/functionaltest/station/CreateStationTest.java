@@ -37,6 +37,7 @@ public class CreateStationTest {
                 .body("success", equalTo(true))
                 .body("timestamp", notNullValue())
                 .body("message", notNullValue())
+                .body("data.uuid", notNullValue())
                 .extract();
         System.out.println(extract.response().getBody().prettyPrint());
 
@@ -117,6 +118,7 @@ public class CreateStationTest {
         requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
         Response response = given(requestSpecification)
                 .log().all().post();
+        System.out.println(response.getHeader("TRACE-ID"));
         System.out.println(response.getBody().prettyPrint());
         response
                 .then()

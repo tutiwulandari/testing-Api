@@ -29,8 +29,8 @@ public class ListMasterStationTest {
                 Collections.singletonMap("TESTING-LOGIN-USER", "STATION_OPERATOR.admin"));
         String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
         requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
-
-        ExtractableResponse<Response> extract = given(requestSpecification).get().then()
+        ExtractableResponse<Response> extract = given(requestSpecification).get()
+                .then()
                 .statusCode(200)
                 .body("version", equalTo("2.0.0"))
                 .body("success", equalTo(true))
@@ -38,7 +38,6 @@ public class ListMasterStationTest {
                 .body("message", notNullValue())
                 .body("data", notNullValue())
                 .extract();
-        // extract.response().prettyPrint();
         System.out.println(extract.response().getBody().prettyPrint());
     }
 
@@ -81,8 +80,6 @@ public class ListMasterStationTest {
                         Collections.singletonMap("TESTING-LOGIN-USER", "STATION_OPERATOR.admin"));
         String tokenWhenUsingLogin = LoginAPI.getTokenWhenUsingLogin();
         requestSpecification.header("Authorization", "Bearer " + tokenWhenUsingLogin);
-        Response response = given(requestSpecification).log().all().get();
-        System.out.println(response.getBody().prettyPrint());
         ValidatableResponse validatableResponse = given(requestSpecification).relaxedHTTPSValidation()
                 .log().all()
                 .get()
@@ -90,7 +87,6 @@ public class ListMasterStationTest {
                 .statusCode(200);
         ResponseBodyExtractionOptions body = validatableResponse.extract().body();
         JsonPath jsonPath = body.jsonPath();
-        System.out.println("body " +  jsonPath);
 
         ArrayList<String> listUsername = jsonPath.get("data.content.user.username");
 

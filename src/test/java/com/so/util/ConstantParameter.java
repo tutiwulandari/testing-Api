@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstantParameter {
-    public static String BASE_URI = "https://a783-118-99-110-0.ngrok-free.app";
+    public static String BASE_URI = "https://9ef4-118-99-110-0.ngrok-free.app";
     public static final String PATH_PARAM_MODULE_STATION = "/v2/stasiun";
 
     public static final String PATH_PARAM_MODULE_GET_STATION = "/v2/stasiun/list";
